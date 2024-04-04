@@ -22,22 +22,22 @@ https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 }
 ```
 
-# @/* paths path alias
+## Path aliases, for example `@/*`
 
 ```json
 {
   "scripts": {
-    "build:typescript": "tsc --project tsconfig.build.json && tsc-alias",
+    "build:typescript": "tsc --project tsconfig.build.json && tsc-alias"
   }
 }
 ```
 
-tsconfig.json
+`tsconfig.json`
 
 ```json
 {
   "compilerOptions": {
-
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -45,8 +45,7 @@ tsconfig.json
 }
 ```
 
-
-vitest.config.ts
+`vitest.config.ts`
 
 ```ts
 import { defineConfig } from 'vitest/config'
@@ -59,4 +58,3 @@ export default defineConfig({
   }
 })
 ```
-

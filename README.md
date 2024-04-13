@@ -58,3 +58,7 @@ export default defineConfig({
   }
 })
 ```
+
+Run test not including `#slow`
+
+`--testNamePattern '^((?!#slow).)*$'`

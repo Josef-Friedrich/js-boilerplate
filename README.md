@@ -62,3 +62,25 @@ export default defineConfig({
 Run test not including `#slow`
 
 `--testNamePattern '^((?!#slow).)*$'`
+
+## Require main
+
+```ts
+if (require.main === module) {
+     // this module was run directly from the command line as in node xxx.js
+} else {
+     // this module was not run directly from the command line and probably loaded by something else
+}
+```
+
+ESM version: 
+
+https://stackoverflow.com/a/72206110
+
+```ts
+const isMainModule = import.meta.url.endsWith(process.argv[1])
+
+if (isMainModule) {
+  console.log('main')
+}
+```

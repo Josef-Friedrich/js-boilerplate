@@ -84,3 +84,14 @@ if (isMainModule) {
   console.log('main')
 }
 ```
+
+# npm-run-all2
+
+```json
+{
+  "scripts": {
+    "build": "run-s build:openapi build:typescript build:json-schema build:union-types"
+  }
+}
+```
+

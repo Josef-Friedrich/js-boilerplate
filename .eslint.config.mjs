@@ -34,6 +34,8 @@ export default tseslint.config(
         'warn',
         {
           args: 'all',
+          // disable warn about some unused params, but keep "@typescript-eslint/no-unused-vars" rule 
+          // https://stackoverflow.com/a/64067915
           argsIgnorePattern: '^_',
           caughtErrors: 'all',
           caughtErrorsIgnorePattern: '^_',

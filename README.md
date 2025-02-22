@@ -95,3 +95,24 @@ if (isMainModule) {
 }
 ```
 
+## Typescript 
+
+### Derive union type from tuple/array values
+
+https://stackoverflow.com/a/45257357
+
+```ts
+export const colorNames = [
+  'white',
+  'yellow',
+  'orange',
+  'red',
+  'brown',
+  'green',
+  'blue',
+  'purple',
+  'black'
+] as const
+
+export type ColorName = (typeof colorNames)[number]
+```

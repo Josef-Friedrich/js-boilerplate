@@ -4,7 +4,6 @@
 
 https://prettier.io/
 
-
 https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
 # Build
@@ -116,3 +115,7 @@ export const colorNames = [
 
 export type ColorName = (typeof colorNames)[number]
 ```
+
+## Linting 
+
+[knip](https://www.npmjs.com/package/knip)

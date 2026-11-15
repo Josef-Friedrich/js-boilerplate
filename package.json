@@ -1,0 +1,113 @@
+{
+  "name": "@bldr/manager",
+  "version": "0.1.0",
+  "description": "Next generation bldr manager. Manage the media files in the media server directory (create, normalize metadata files, rename media files, normalize the presentation content file). To all the backend stuff.",
+  "homepage": "https://github.com/Josef-Friedrich/bldr#readme",
+  "bugs": {
+    "url": "https://github.com/Josef-Friedrich/bldr/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josef-Friedrich/bldr.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Josef Friedrich",
+    "email": "josef@friedrich.rocks",
+    "url": "https://josef.friedrich.rocks"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./file": "./dist/file.js",
+    "./test-helper": "./dist/test-helper.js"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "build:tsoa:routes": "tsoa routes",
+    "build:tsoa:spec": "tsoa spec",
+    "build:typescript": "tsc --project tsconfig.build.json && tsc-alias",
+    "build": "rimraf ./dist && run-s build:tsoa:routes build:tsoa:spec build:typescript && cp -f dist/api/swagger.json src/api/swagger.json ",
+    "lint:depcheck": "depcheck",
+    "lint": "eslint ./src && npm run lint:depcheck",
+    "format": "prettier --write src/",
+    "test:all": "vitest run",
+    "test:api": "vitest run ./src/api/",
+    "test:api:media": "vitest run ./src/api/controller/media.test.ts",
+    "test:api-server": "vitest run ./src/api/server.test.ts",
+    "test:asset-file": "vitest run ./src/meta/asset-file.test.ts",
+    "test:audacity": "npm run build:typescript && vitest run ./src/workbench/audacity.test.ts",
+    "test:audio-tag": "vitest run ./src/meta/audio-tag.test.ts",
+    "test:child-process-wrapper": "vitest run ./src/cli-utils/child-process-wrapper.test.ts",
+    "test:cli-utils": "vitest run ./src/cli-utils/",
+    "test:cli": "vitest run ./src/cli.test.ts",
+    "test:db": "vitest run ./src/db.test.ts",
+    "test:downloader": "npm run build:typescript && vitest run ./src/workbench/downloader.test.ts",
+    "test:ffmpeg": "vitest run ./src/cli-utils/ffmpeg.test.ts",
+    "test:npm": "vitest run ./src/cli-utils/npm.test.ts",
+    "test:file": "vitest run ./src/file.test.ts",
+    "test:general": "vitest run ./src/meta/categories/general.test.ts",
+    "test:git": "vitest run ./src/cli-utils/git.test.ts",
+    "test:icon-font": "npm run build:typescript && vitest run ./src/workbench/icon-font.test.ts",
+    "test:launch": "vitest run ./src/cli-utils/launch.test.ts",
+    "test:localizer": "vitest run ./src/localizer.test.ts",
+    "test:manager": "vitest run ./src/manager.test.ts",
+    "test:media-tree-traverser": "npm run build:typescript && vitest run ./src/workbench/media-tree-traverser.test.ts",
+    "test:media-tree": "npm run build:typescript && vitest run ./src/meta/media-tree.test.ts",
+    "test:meta": "vitest run ./src/meta/",
+    "test:mime-type": "vitest run ./src/meta/categories/mime-type.test.ts",
+    "test:musescore": "vitest run ./src/workbench/musescore.test.ts",
+    "test:ocr": "vitest run ./src/workbench/ocr.test.ts",
+    "test:pdf": "vitest run ./src/cli-utils/pdf.test.ts",
+    "test:presentation-file": "vitest run ./src/meta/presentation-file.test.ts",
+    "test:semantic": "vitest run ./src/meta/categories/semantic.test.ts",
+    "test:tex": "vitest run ./src/workbench/tex.test.ts",
+    "test:titles": "vitest run ./src/meta/titles.test.ts",
+    "test:traverser": "npm run test:media-tree-traverser",
+    "test:utils": "vitest run ./src/utils.test.ts",
+    "test:websocket": "vitest run ./src/websocket.test.ts",
+    "test:wikidata": "vitest run ./src/meta/wikidata.test.ts",
+    "test:workbench": "npm run build:typescript && vitest run ./src/workbench/",
+    "test:quick": "vitest run --testNamePattern '^((?!#slow).)*$'",
+    "test": "run-s build test:quick"
+  },
+  "dependencies": {
+    "@bldr/universum": "*",
+    "@types/better-sqlite3": "^9.6.0",
+    "better-sqlite3": "^13.0.3",
+    "commander": "^15.1.0",
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "glob": "^14.0.4",
+    "music-metadata": "^12.3.5",
+    "reflect-metadata": "^0.2.2",
+    "shlex": "^3.0.0",
+    "swagger-ui-express": "^5.0.1",
+    "tsoa": "^6.6.0",
+    "tsyringe": "^4.10.0",
+    "webfont": "^12.7.0",
+    "wikibase-sdk": "^11.6.8",
+    "ws": "^8.22.2",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7",
+    "joi": "^18.3.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tsoa/runtime": "^6.6.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "~5",
+    "@types/swagger-ui-express": "^4.1.8",
+    "@types/ws": "^8.18.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.1.4",
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "overrides": {
+    "@types/express": "~5"
+  }
+}
